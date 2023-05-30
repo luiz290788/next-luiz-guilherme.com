@@ -1,8 +1,11 @@
 import { ISbStories } from "@storyblok/react";
 import { getStoryblokApi } from "@storyblok/react/rsc";
 
+const version = (process.env.STORYBLOK_API_VERSION as 'published' | 'draft' | undefined) ?? 'published'
+
 function fetchBlogPosts(): Promise<ISbStories> {
   return getStoryblokApi().get(`cdn/stories`, {
+    version,
     starts_with: 'blog-posts/',
     per_page: 5,
     sort_by: 'first_published_at:desc'
