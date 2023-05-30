@@ -3,7 +3,6 @@ import StoryblokStory from "@storyblok/react/story";
 
 function fetchBlogPost(slug: string): Promise<ISbStory> {
   return getStoryblokApi().get(`cdn/stories/blog-posts/${slug}`, {
-    version: 'draft',
     resolve_relations: ['references']
   });
 }
@@ -20,7 +19,6 @@ export default async function BlogPost({ params }: { params: Params }) {
 
 export async function generateStaticParams() {
   const result: ISbStories = await getStoryblokApi().get(`cdn/stories`, {
-    version: "draft",
     starts_with: 'blog-posts/',
     per_page: 100,
     sort_by: 'first_published_at:asc',
