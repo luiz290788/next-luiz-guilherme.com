@@ -2,8 +2,6 @@ import StoryblokProvider from "@/components/StoryblokProvider";
 import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
 import { Inter } from 'next/font/google';
 
-export const fetchCache = 'default-no-store'
-
 storyblokInit({
   accessToken: process.env.STORYBLOK_KEY,
   use: [apiPlugin],
