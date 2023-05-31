@@ -7,7 +7,7 @@ function fetchBlogPosts(): Promise<ISbStories> {
   return getStoryblokApi().get(`cdn/stories`, {
     version,
     starts_with: 'blog-posts/',
-    per_page: 5,
+    per_page: 100,
     sort_by: 'first_published_at:desc'
   });
 }
