@@ -1,12 +1,4 @@
-import StoryblokProvider from "@/components/StoryblokProvider";
-import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
 import { Inter } from 'next/font/google';
-
-storyblokInit({
-  accessToken: process.env.STORYBLOK_KEY,
-  use: [apiPlugin],
-  apiOptions: { region: 'us' },
-});
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,11 +13,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <StoryblokProvider>
       <html lang="en">
         <body className={inter.className}>{children}</body>
       </html>
-    </StoryblokProvider>
   )
 }
 
