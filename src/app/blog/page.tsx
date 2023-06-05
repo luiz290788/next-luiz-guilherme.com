@@ -1,29 +1,12 @@
-import { ISbStories } from "@storyblok/react";
-import { getStoryblokApi } from "@storyblok/react/rsc";
-
-const version = (process.env.STORYBLOK_API_VERSION as 'published' | 'draft' | undefined) ?? 'published'
-
-function fetchBlogPosts(): Promise<ISbStories> {
-  return getStoryblokApi().get(`cdn/stories`, {
-    version,
-    starts_with: 'blog-posts/',
-    per_page: 100,
-    sort_by: 'first_published_at:desc'
-  });
-}
 
 const BlogLandingPage = async () => {
-
-  const { data } = await fetchBlogPosts()
 
   return (
     <div>
       <ul>
-        {
-          data.stories.map((story) => (
-            <li key={story.slug}><a href={`/blog/${story.slug}`}>{story.content.title}</a></li>
-          ))
-        }
+        <li ><a href="/blog/post-one">Post one</a></li>
+        <li ><a href="/blog/post-two">Post two</a></li>
+        <li ><a href="/blog/post-three">Post three</a></li>
       </ul>
     </div>
   )
